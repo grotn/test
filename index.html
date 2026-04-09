@@ -246,6 +246,20 @@
                 inset 0 1px 0 rgba(255, 255, 255, 0.6);
         }
 
+        .app-card:focus {
+            outline: 2px solid rgba(90, 120, 220, 0.6);
+            outline-offset: 2px;
+        }
+
+        .app-card:focus:not(:focus-visible) {
+            outline: none;
+        }
+
+        .app-card:focus-visible {
+            outline: 2px solid rgba(90, 120, 220, 0.6);
+            outline-offset: 2px;
+        }
+
         .app-icon {
             width: 48px;
             height: 48px;
@@ -566,7 +580,7 @@
 
         <!-- Windows Apps -->
         <div class="apps-grid active" data-platform="windows">
-            <div class="app-card" data-app="flclashx" onclick="selectApp(this)">
+            <div class="app-card" tabindex="0" role="button" data-app="flclashx" onclick="selectApp(this)">
                 <div class="app-icon flclashx">
                     <span class="flclashx-letter">X</span>
                 </div>
@@ -574,7 +588,7 @@
                     <div class="app-name">FlClashX</div>
                 </div>
             </div>
-            <div class="app-card" data-app="koala" onclick="selectApp(this)">
+            <div class="app-card" tabindex="0" role="button" data-app="koala" onclick="selectApp(this)">
                 <div class="app-icon koala">
                     <svg viewBox="0 0 48 48" width="48" height="48">
                         <circle cx="12" cy="15" r="8" fill="#8B7355"/>
@@ -595,7 +609,7 @@
                     <div class="app-name">Koala Clash</div>
                 </div>
             </div>
-            <div class="app-card" data-app="prizrak" onclick="selectApp(this)">
+            <div class="app-card" tabindex="0" role="button" data-app="prizrak" onclick="selectApp(this)">
                 <div class="app-icon prizrak">
                     <svg viewBox="0 0 48 48" width="48" height="48">
                         <path d="M14 36V24c0-5.5 4.5-10 10-10s10 4.5 10 10v12l-3.3-3L28 36l-3.3-3L22 36l-3.3-3L14 36z" fill="white" opacity="0.92"/>
@@ -610,7 +624,7 @@
                     <div class="app-name">Prizrak-Box</div>
                 </div>
             </div>
-            <div class="app-card" data-app="happ" onclick="selectApp(this)">
+            <div class="app-card" tabindex="0" role="button" data-app="happ" onclick="selectApp(this)">
                 <div class="app-icon happ">
                     <span class="happ-letter">H</span>
                 </div>
@@ -622,7 +636,7 @@
 
         <!-- iOS Apps -->
         <div class="apps-grid" data-platform="ios">
-            <div class="app-card" data-app="happ" onclick="selectApp(this)">
+            <div class="app-card" tabindex="0" role="button" data-app="happ" onclick="selectApp(this)">
                 <div class="app-icon happ">
                     <span class="happ-letter">H</span>
                 </div>
@@ -630,7 +644,7 @@
                     <div class="app-name">Happ</div>
                 </div>
             </div>
-            <div class="app-card" data-app="stash" onclick="selectApp(this)">
+            <div class="app-card" tabindex="0" role="button" data-app="stash" onclick="selectApp(this)">
                 <div class="app-icon stash">
                     <span class="stash-letter">S</span>
                 </div>
@@ -638,7 +652,7 @@
                     <div class="app-name">Stash</div>
                 </div>
             </div>
-            <div class="app-card" data-app="shadowrocket" onclick="selectApp(this)">
+            <div class="app-card" tabindex="0" role="button" data-app="shadowrocket" onclick="selectApp(this)">
                 <div class="app-icon shadowrocket">
                     <svg viewBox="0 0 48 48" width="48" height="48">
                         <path d="M24 8l3 8h-2l8 12h-6l5 12-16-14h6l-7-10h4L24 8z" fill="white" opacity="0.9"/>
@@ -648,7 +662,7 @@
                     <div class="app-name">Shadowrocket</div>
                 </div>
             </div>
-            <div class="app-card" data-app="streisand" onclick="selectApp(this)">
+            <div class="app-card" tabindex="0" role="button" data-app="streisand" onclick="selectApp(this)">
                 <div class="app-icon streisand">
                     <svg viewBox="0 0 48 48" width="48" height="48">
                         <path d="M24 10l2.5 7H34l-6 4.5 2.3 7L24 24l-6.3 4.5 2.3-7L14 17h7.5L24 10z" fill="white" opacity="0.85"/>
@@ -663,7 +677,7 @@
 
         <!-- macOS Apps -->
         <div class="apps-grid" data-platform="macos">
-            <div class="app-card" data-app="happ" onclick="selectApp(this)">
+            <div class="app-card" tabindex="0" role="button" data-app="happ" onclick="selectApp(this)">
                 <div class="app-icon happ">
                     <span class="happ-letter">H</span>
                 </div>
@@ -671,7 +685,7 @@
                     <div class="app-name">Happ</div>
                 </div>
             </div>
-            <div class="app-card" data-app="flclashx" onclick="selectApp(this)">
+            <div class="app-card" tabindex="0" role="button" data-app="flclashx" onclick="selectApp(this)">
                 <div class="app-icon flclashx">
                     <span class="flclashx-letter">X</span>
                 </div>
@@ -679,7 +693,7 @@
                     <div class="app-name">FlClashX</div>
                 </div>
             </div>
-            <div class="app-card" data-app="koala" onclick="selectApp(this)">
+            <div class="app-card" tabindex="0" role="button" data-app="koala" onclick="selectApp(this)">
                 <div class="app-icon koala">
                     <svg viewBox="0 0 48 48" width="48" height="48">
                         <circle cx="12" cy="15" r="8" fill="#8B7355"/>
@@ -700,7 +714,7 @@
                     <div class="app-name">Koala Clash</div>
                 </div>
             </div>
-            <div class="app-card" data-app="prizrak" onclick="selectApp(this)">
+            <div class="app-card" tabindex="0" role="button" data-app="prizrak" onclick="selectApp(this)">
                 <div class="app-icon prizrak">
                     <svg viewBox="0 0 48 48" width="48" height="48">
                         <path d="M14 36V24c0-5.5 4.5-10 10-10s10 4.5 10 10v12l-3.3-3L28 36l-3.3-3L22 36l-3.3-3L14 36z" fill="white" opacity="0.92"/>
@@ -719,7 +733,7 @@
 
         <!-- Android Apps -->
         <div class="apps-grid" data-platform="android">
-            <div class="app-card" data-app="happ" onclick="selectApp(this)">
+            <div class="app-card" tabindex="0" role="button" data-app="happ" onclick="selectApp(this)">
                 <div class="app-icon happ">
                     <span class="happ-letter">H</span>
                 </div>
@@ -727,7 +741,7 @@
                     <div class="app-name">Happ</div>
                 </div>
             </div>
-            <div class="app-card" data-app="flclashx" onclick="selectApp(this)">
+            <div class="app-card" tabindex="0" role="button" data-app="flclashx" onclick="selectApp(this)">
                 <div class="app-icon flclashx">
                     <span class="flclashx-letter">X</span>
                 </div>
@@ -735,7 +749,7 @@
                     <div class="app-name">FlClashX</div>
                 </div>
             </div>
-            <div class="app-card" data-app="clashmeta" onclick="selectApp(this)">
+            <div class="app-card" tabindex="0" role="button" data-app="clashmeta" onclick="selectApp(this)">
                 <div class="app-icon clashmeta">
                     <svg viewBox="0 0 48 48" width="48" height="48">
                         <path d="M14 16h20v3H14z" fill="white" opacity="0.9"/>
@@ -747,7 +761,7 @@
                     <div class="app-name">Clash Meta</div>
                 </div>
             </div>
-            <div class="app-card" data-app="v2rayng" onclick="selectApp(this)">
+            <div class="app-card" tabindex="0" role="button" data-app="v2rayng" onclick="selectApp(this)">
                 <div class="app-icon v2rayng">
                     <svg viewBox="0 0 48 48" width="48" height="48">
                         <path d="M16 14l8 10-8 10" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
@@ -763,7 +777,7 @@
 
         <!-- Linux Apps -->
         <div class="apps-grid" data-platform="linux">
-            <div class="app-card" data-app="flclashx" onclick="selectApp(this)">
+            <div class="app-card" tabindex="0" role="button" data-app="flclashx" onclick="selectApp(this)">
                 <div class="app-icon flclashx">
                     <span class="flclashx-letter">X</span>
                 </div>
@@ -771,7 +785,7 @@
                     <div class="app-name">FlClashX</div>
                 </div>
             </div>
-            <div class="app-card" data-app="koala" onclick="selectApp(this)">
+            <div class="app-card" tabindex="0" role="button" data-app="koala" onclick="selectApp(this)">
                 <div class="app-icon koala">
                     <svg viewBox="0 0 48 48" width="48" height="48">
                         <circle cx="12" cy="15" r="8" fill="#8B7355"/>
@@ -792,7 +806,7 @@
                     <div class="app-name">Koala Clash</div>
                 </div>
             </div>
-            <div class="app-card" data-app="prizrak" onclick="selectApp(this)">
+            <div class="app-card" tabindex="0" role="button" data-app="prizrak" onclick="selectApp(this)">
                 <div class="app-icon prizrak">
                     <svg viewBox="0 0 48 48" width="48" height="48">
                         <path d="M14 36V24c0-5.5 4.5-10 10-10s10 4.5 10 10v12l-3.3-3L28 36l-3.3-3L22 36l-3.3-3L14 36z" fill="white" opacity="0.92"/>
@@ -811,7 +825,7 @@
 
         <!-- Apple TV Apps -->
         <div class="apps-grid" data-platform="appletv">
-            <div class="app-card" data-app="happ" onclick="selectApp(this)">
+            <div class="app-card" tabindex="0" role="button" data-app="happ" onclick="selectApp(this)">
                 <div class="app-icon happ">
                     <span class="happ-letter">H</span>
                 </div>
@@ -819,7 +833,7 @@
                     <div class="app-name">Happ</div>
                 </div>
             </div>
-            <div class="app-card" data-app="shadowrocket" onclick="selectApp(this)">
+            <div class="app-card" tabindex="0" role="button" data-app="shadowrocket" onclick="selectApp(this)">
                 <div class="app-icon shadowrocket">
                     <svg viewBox="0 0 48 48" width="48" height="48">
                         <path d="M24 8l3 8h-2l8 12h-6l5 12-16-14h6l-7-10h4L24 8z" fill="white" opacity="0.9"/>
@@ -829,7 +843,7 @@
                     <div class="app-name">Shadowrocket</div>
                 </div>
             </div>
-            <div class="app-card" data-app="stash" onclick="selectApp(this)">
+            <div class="app-card" tabindex="0" role="button" data-app="stash" onclick="selectApp(this)">
                 <div class="app-icon stash">
                     <span class="stash-letter">S</span>
                 </div>
@@ -841,7 +855,7 @@
 
         <!-- Android TV Apps -->
         <div class="apps-grid" data-platform="androidtv">
-            <div class="app-card" data-app="happ" onclick="selectApp(this)">
+            <div class="app-card" tabindex="0" role="button" data-app="happ" onclick="selectApp(this)">
                 <div class="app-icon happ">
                     <span class="happ-letter">H</span>
                 </div>
@@ -849,7 +863,7 @@
                     <div class="app-name">Happ</div>
                 </div>
             </div>
-            <div class="app-card" data-app="vpn4tv" onclick="selectApp(this)">
+            <div class="app-card" tabindex="0" role="button" data-app="vpn4tv" onclick="selectApp(this)">
                 <div class="app-icon vpn4tv">
                     <svg viewBox="0 0 48 48" width="48" height="48">
                         <text x="24" y="20" text-anchor="middle" fill="white" font-family="Inter, sans-serif" font-size="11" font-weight="700" opacity="0.9">VPN</text>
@@ -1089,6 +1103,17 @@
                 allCards[i].classList.remove('selected');
             }
         }
+
+        // Keyboard support for app cards (Enter / Space)
+        document.addEventListener('keydown', function(e) {
+            var target = e.target;
+            if (target.classList && target.classList.contains('app-card')) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    selectApp(target);
+                }
+            }
+        });
     </script>
 </body>
 </html>
