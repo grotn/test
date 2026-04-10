@@ -225,6 +225,39 @@
             box-shadow:
                 0 2px 8px rgba(0, 0, 0, 0.04),
                 inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .app-card:hover {
+            background: rgba(255, 255, 255, 0.7);
+            border-color: rgba(0, 0, 0, 0.1);
+            transform: translateY(-1px);
+            box-shadow:
+                0 4px 12px rgba(0, 0, 0, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        }
+
+        .app-card.selected {
+            background: rgba(255, 255, 255, 0.8);
+            border-color: rgba(90, 120, 220, 0.4);
+            box-shadow:
+                0 4px 16px rgba(90, 120, 220, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6);
+        }
+
+        .app-card:focus {
+            outline: 2px solid rgba(90, 120, 220, 0.6);
+            outline-offset: 2px;
+        }
+
+        .app-card:focus:not(:focus-visible) {
+            outline: none;
+        }
+
+        .app-card:focus-visible {
+            outline: 2px solid rgba(90, 120, 220, 0.6);
+            outline-offset: 2px;
         }
 
         .app-icon {
@@ -343,28 +376,15 @@
             color: #1a1a2e;
         }
 
-        .app-btn {
-            display: inline-block;
-            font-size: 11px;
-            font-weight: 500;
-            color: #666;
-            background: rgba(0, 0, 0, 0.04);
-            border: 1px solid rgba(0, 0, 0, 0.07);
-            border-radius: 8px;
-            padding: 5px 10px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.2s;
-            text-align: center;
-            width: fit-content;
-        }
-
-        .app-btn:hover {
-            background: rgba(0, 0, 0, 0.08);
-            color: #333;
-        }
-
         /* ---- Guide Steps ---- */
+        .guide-section {
+            display: none;
+        }
+
+        .guide-section.visible {
+            display: block;
+        }
+
         .guide-steps {
             display: flex;
             flex-direction: column;
@@ -373,8 +393,8 @@
 
         .guide-step {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
+            flex-direction: column;
+            gap: 10px;
             background: rgba(255, 255, 255, 0.5);
             border-radius: 18px;
             padding: 16px 20px;
@@ -384,9 +404,9 @@
                 inset 0 1px 0 rgba(255, 255, 255, 0.5);
         }
 
-        .step-left {
+        .step-header {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 12px;
         }
 
@@ -397,11 +417,19 @@
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
+            margin-top: 1px;
         }
 
         .step-icon svg {
             width: 20px;
             height: 20px;
+        }
+
+        .step-content {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            min-width: 0;
         }
 
         .step-title {
@@ -410,11 +438,17 @@
             color: #1a1a2e;
         }
 
+        .step-description {
+            font-size: 12px;
+            font-weight: 400;
+            color: #666;
+            line-height: 1.5;
+        }
+
         .step-actions {
             display: flex;
             gap: 6px;
             flex-wrap: wrap;
-            justify-content: flex-end;
         }
 
         .step-btn {
@@ -560,16 +594,15 @@
 
         <!-- Windows Apps -->
         <div class="apps-grid active" data-platform="windows">
-            <div class="app-card">
+            <div class="app-card" tabindex="0" role="button" data-app="flclashx" onclick="selectApp(this)">
                 <div class="app-icon flclashx">
                     <span class="flclashx-letter">X</span>
                 </div>
                 <div class="app-info">
                     <div class="app-name">FlClashX</div>
-                    <a href="#" class="app-btn">Install FlClashX</a>
                 </div>
             </div>
-            <div class="app-card">
+            <div class="app-card" tabindex="0" role="button" data-app="koala" onclick="selectApp(this)">
                 <div class="app-icon koala">
                     <svg viewBox="0 0 48 48" width="48" height="48">
                         <circle cx="12" cy="15" r="8" fill="#8B7355"/>
@@ -588,10 +621,9 @@
                 </div>
                 <div class="app-info">
                     <div class="app-name">Koala Clash</div>
-                    <a href="#" class="app-btn">Install Koala Clash</a>
                 </div>
             </div>
-            <div class="app-card">
+            <div class="app-card" tabindex="0" role="button" data-app="prizrak" onclick="selectApp(this)">
                 <div class="app-icon prizrak">
                     <svg viewBox="0 0 48 48" width="48" height="48">
                         <path d="M14 36V24c0-5.5 4.5-10 10-10s10 4.5 10 10v12l-3.3-3L28 36l-3.3-3L22 36l-3.3-3L14 36z" fill="white" opacity="0.92"/>
@@ -604,41 +636,37 @@
                 </div>
                 <div class="app-info">
                     <div class="app-name">Prizrak-Box</div>
-                    <a href="#" class="app-btn">Install Prizrak-Box</a>
                 </div>
             </div>
-            <div class="app-card">
+            <div class="app-card" tabindex="0" role="button" data-app="happ" onclick="selectApp(this)">
                 <div class="app-icon happ">
                     <span class="happ-letter">H</span>
                 </div>
                 <div class="app-info">
                     <div class="app-name">Happ</div>
-                    <a href="#" class="app-btn">Install Happ</a>
                 </div>
             </div>
         </div>
 
         <!-- iOS Apps -->
         <div class="apps-grid" data-platform="ios">
-            <div class="app-card">
+            <div class="app-card" tabindex="0" role="button" data-app="happ" onclick="selectApp(this)">
                 <div class="app-icon happ">
                     <span class="happ-letter">H</span>
                 </div>
                 <div class="app-info">
                     <div class="app-name">Happ</div>
-                    <a href="#" class="app-btn">Install Happ</a>
                 </div>
             </div>
-            <div class="app-card">
+            <div class="app-card" tabindex="0" role="button" data-app="stash" onclick="selectApp(this)">
                 <div class="app-icon stash">
                     <span class="stash-letter">S</span>
                 </div>
                 <div class="app-info">
                     <div class="app-name">Stash</div>
-                    <a href="#" class="app-btn">Install Stash</a>
                 </div>
             </div>
-            <div class="app-card">
+            <div class="app-card" tabindex="0" role="button" data-app="shadowrocket" onclick="selectApp(this)">
                 <div class="app-icon shadowrocket">
                     <svg viewBox="0 0 48 48" width="48" height="48">
                         <path d="M24 8l3 8h-2l8 12h-6l5 12-16-14h6l-7-10h4L24 8z" fill="white" opacity="0.9"/>
@@ -646,10 +674,9 @@
                 </div>
                 <div class="app-info">
                     <div class="app-name">Shadowrocket</div>
-                    <a href="#" class="app-btn">Install Shadowrocket</a>
                 </div>
             </div>
-            <div class="app-card">
+            <div class="app-card" tabindex="0" role="button" data-app="streisand" onclick="selectApp(this)">
                 <div class="app-icon streisand">
                     <svg viewBox="0 0 48 48" width="48" height="48">
                         <path d="M24 10l2.5 7H34l-6 4.5 2.3 7L24 24l-6.3 4.5 2.3-7L14 17h7.5L24 10z" fill="white" opacity="0.85"/>
@@ -658,32 +685,29 @@
                 </div>
                 <div class="app-info">
                     <div class="app-name">Streisand</div>
-                    <a href="#" class="app-btn">Install Streisand</a>
                 </div>
             </div>
         </div>
 
         <!-- macOS Apps -->
         <div class="apps-grid" data-platform="macos">
-            <div class="app-card">
+            <div class="app-card" tabindex="0" role="button" data-app="happ" onclick="selectApp(this)">
                 <div class="app-icon happ">
                     <span class="happ-letter">H</span>
                 </div>
                 <div class="app-info">
                     <div class="app-name">Happ</div>
-                    <a href="#" class="app-btn">Install Happ</a>
                 </div>
             </div>
-            <div class="app-card">
+            <div class="app-card" tabindex="0" role="button" data-app="flclashx" onclick="selectApp(this)">
                 <div class="app-icon flclashx">
                     <span class="flclashx-letter">X</span>
                 </div>
                 <div class="app-info">
                     <div class="app-name">FlClashX</div>
-                    <a href="#" class="app-btn">Install FlClashX</a>
                 </div>
             </div>
-            <div class="app-card">
+            <div class="app-card" tabindex="0" role="button" data-app="koala" onclick="selectApp(this)">
                 <div class="app-icon koala">
                     <svg viewBox="0 0 48 48" width="48" height="48">
                         <circle cx="12" cy="15" r="8" fill="#8B7355"/>
@@ -702,10 +726,9 @@
                 </div>
                 <div class="app-info">
                     <div class="app-name">Koala Clash</div>
-                    <a href="#" class="app-btn">Install Koala Clash</a>
                 </div>
             </div>
-            <div class="app-card">
+            <div class="app-card" tabindex="0" role="button" data-app="prizrak" onclick="selectApp(this)">
                 <div class="app-icon prizrak">
                     <svg viewBox="0 0 48 48" width="48" height="48">
                         <path d="M14 36V24c0-5.5 4.5-10 10-10s10 4.5 10 10v12l-3.3-3L28 36l-3.3-3L22 36l-3.3-3L14 36z" fill="white" opacity="0.92"/>
@@ -718,32 +741,29 @@
                 </div>
                 <div class="app-info">
                     <div class="app-name">Prizrak-Box</div>
-                    <a href="#" class="app-btn">Install Prizrak-Box</a>
                 </div>
             </div>
         </div>
 
         <!-- Android Apps -->
         <div class="apps-grid" data-platform="android">
-            <div class="app-card">
+            <div class="app-card" tabindex="0" role="button" data-app="happ" onclick="selectApp(this)">
                 <div class="app-icon happ">
                     <span class="happ-letter">H</span>
                 </div>
                 <div class="app-info">
                     <div class="app-name">Happ</div>
-                    <a href="#" class="app-btn">Install Happ</a>
                 </div>
             </div>
-            <div class="app-card">
+            <div class="app-card" tabindex="0" role="button" data-app="flclashx" onclick="selectApp(this)">
                 <div class="app-icon flclashx">
                     <span class="flclashx-letter">X</span>
                 </div>
                 <div class="app-info">
                     <div class="app-name">FlClashX</div>
-                    <a href="#" class="app-btn">Install FlClashX</a>
                 </div>
             </div>
-            <div class="app-card">
+            <div class="app-card" tabindex="0" role="button" data-app="clashmeta" onclick="selectApp(this)">
                 <div class="app-icon clashmeta">
                     <svg viewBox="0 0 48 48" width="48" height="48">
                         <path d="M14 16h20v3H14z" fill="white" opacity="0.9"/>
@@ -753,10 +773,9 @@
                 </div>
                 <div class="app-info">
                     <div class="app-name">Clash Meta</div>
-                    <a href="#" class="app-btn">Install Clash Meta</a>
                 </div>
             </div>
-            <div class="app-card">
+            <div class="app-card" tabindex="0" role="button" data-app="v2rayng" onclick="selectApp(this)">
                 <div class="app-icon v2rayng">
                     <svg viewBox="0 0 48 48" width="48" height="48">
                         <path d="M16 14l8 10-8 10" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
@@ -766,23 +785,21 @@
                 </div>
                 <div class="app-info">
                     <div class="app-name">v2rayNG</div>
-                    <a href="#" class="app-btn">Install v2rayNG</a>
                 </div>
             </div>
         </div>
 
         <!-- Linux Apps -->
         <div class="apps-grid" data-platform="linux">
-            <div class="app-card">
+            <div class="app-card" tabindex="0" role="button" data-app="flclashx" onclick="selectApp(this)">
                 <div class="app-icon flclashx">
                     <span class="flclashx-letter">X</span>
                 </div>
                 <div class="app-info">
                     <div class="app-name">FlClashX</div>
-                    <a href="#" class="app-btn">Install FlClashX</a>
                 </div>
             </div>
-            <div class="app-card">
+            <div class="app-card" tabindex="0" role="button" data-app="koala" onclick="selectApp(this)">
                 <div class="app-icon koala">
                     <svg viewBox="0 0 48 48" width="48" height="48">
                         <circle cx="12" cy="15" r="8" fill="#8B7355"/>
@@ -801,10 +818,9 @@
                 </div>
                 <div class="app-info">
                     <div class="app-name">Koala Clash</div>
-                    <a href="#" class="app-btn">Install Koala Clash</a>
                 </div>
             </div>
-            <div class="app-card">
+            <div class="app-card" tabindex="0" role="button" data-app="prizrak" onclick="selectApp(this)">
                 <div class="app-icon prizrak">
                     <svg viewBox="0 0 48 48" width="48" height="48">
                         <path d="M14 36V24c0-5.5 4.5-10 10-10s10 4.5 10 10v12l-3.3-3L28 36l-3.3-3L22 36l-3.3-3L14 36z" fill="white" opacity="0.92"/>
@@ -817,23 +833,21 @@
                 </div>
                 <div class="app-info">
                     <div class="app-name">Prizrak-Box</div>
-                    <a href="#" class="app-btn">Install Prizrak-Box</a>
                 </div>
             </div>
         </div>
 
         <!-- Apple TV Apps -->
         <div class="apps-grid" data-platform="appletv">
-            <div class="app-card">
+            <div class="app-card" tabindex="0" role="button" data-app="happ" onclick="selectApp(this)">
                 <div class="app-icon happ">
                     <span class="happ-letter">H</span>
                 </div>
                 <div class="app-info">
                     <div class="app-name">Happ</div>
-                    <a href="#" class="app-btn">Install Happ</a>
                 </div>
             </div>
-            <div class="app-card">
+            <div class="app-card" tabindex="0" role="button" data-app="shadowrocket" onclick="selectApp(this)">
                 <div class="app-icon shadowrocket">
                     <svg viewBox="0 0 48 48" width="48" height="48">
                         <path d="M24 8l3 8h-2l8 12h-6l5 12-16-14h6l-7-10h4L24 8z" fill="white" opacity="0.9"/>
@@ -841,32 +855,29 @@
                 </div>
                 <div class="app-info">
                     <div class="app-name">Shadowrocket</div>
-                    <a href="#" class="app-btn">Install Shadowrocket</a>
                 </div>
             </div>
-            <div class="app-card">
+            <div class="app-card" tabindex="0" role="button" data-app="stash" onclick="selectApp(this)">
                 <div class="app-icon stash">
                     <span class="stash-letter">S</span>
                 </div>
                 <div class="app-info">
                     <div class="app-name">Stash</div>
-                    <a href="#" class="app-btn">Install Stash</a>
                 </div>
             </div>
         </div>
 
         <!-- Android TV Apps -->
         <div class="apps-grid" data-platform="androidtv">
-            <div class="app-card">
+            <div class="app-card" tabindex="0" role="button" data-app="happ" onclick="selectApp(this)">
                 <div class="app-icon happ">
                     <span class="happ-letter">H</span>
                 </div>
                 <div class="app-info">
                     <div class="app-name">Happ</div>
-                    <a href="#" class="app-btn">Install Happ</a>
                 </div>
             </div>
-            <div class="app-card">
+            <div class="app-card" tabindex="0" role="button" data-app="vpn4tv" onclick="selectApp(this)">
                 <div class="app-icon vpn4tv">
                     <svg viewBox="0 0 48 48" width="48" height="48">
                         <text x="24" y="20" text-anchor="middle" fill="white" font-family="Inter, sans-serif" font-size="11" font-weight="700" opacity="0.9">VPN</text>
@@ -875,76 +886,14 @@
                 </div>
                 <div class="app-info">
                     <div class="app-name">vpn4tv</div>
-                    <a href="#" class="app-btn">Install vpn4tv</a>
                 </div>
             </div>
         </div>
 
-        <h2>Installation Guide</h2>
-
-        <div class="guide-steps">
-            <div class="guide-step">
-                <div class="step-left">
-                    <div class="step-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                            <polyline points="7 10 12 15 17 10"/>
-                            <line x1="12" y1="15" x2="12" y2="3"/>
-                        </svg>
-                    </div>
-                    <div class="step-title">1. Download Application</div>
-                </div>
-                <div class="step-actions">
-                    <a href="#" class="step-btn">Windows Installer</a>
-                    <a href="#" class="step-btn">Windows ARM Installer</a>
-                </div>
-            </div>
-
-            <div class="guide-step">
-                <div class="step-left">
-                    <div class="step-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="12" y1="5" x2="12" y2="19"/>
-                            <line x1="5" y1="12" x2="19" y2="12"/>
-                        </svg>
-                    </div>
-                    <div class="step-title">2. Add Subscription</div>
-                </div>
-                <div class="step-actions">
-                    <a href="#" class="step-btn">+ Add Subscription</a>
-                </div>
-            </div>
-
-            <div class="guide-step">
-                <div class="step-left">
-                    <div class="step-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"/>
-                            <line x1="12" y1="16" x2="12" y2="12"/>
-                            <line x1="12" y1="8" x2="12.01" y2="8"/>
-                        </svg>
-                    </div>
-                    <div class="step-title">3. Troubleshooting</div>
-                </div>
-                <div class="step-actions">
-                    <a href="#" class="step-btn">Go to Profile</a>
-                </div>
-            </div>
-
-            <div class="guide-step">
-                <div class="step-left">
-                    <div class="step-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
-                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
-                        </svg>
-                    </div>
-                    <div class="step-title">4. Connect & Use</div>
-                </div>
-                <div class="step-actions">
-                    <a href="#" class="step-btn">Open Dashboard</a>
-                </div>
-            </div>
+        <!-- Installation Guide (dynamic, shown on app card click) -->
+        <div id="guideSection" class="guide-section">
+            <h2 id="guideTitle">Installation Guide</h2>
+            <div id="guideSteps" class="guide-steps"></div>
         </div>
 
         <div class="lang-switch">
@@ -959,7 +908,7 @@
     </div>
 
     <script>
-        const platformIcons = {
+        var platformIcons = {
             windows: '<path d="M0 2.3l6.5-.9v6.3H0V2.3zm7.3-1L16 0v7.7H7.3V1.3zM16 8.4V16l-8.7-1.2V8.4H16zM6.5 14.7L0 13.8V8.4h6.5v6.3z"/>',
             macos: '<path d="M12.2 4.3c.7-.9 1.2-2.1 1.1-3.3-1 0-2.3.7-3 1.6-.6.8-1.2 2-1 3.2 1.2.1 2.3-.6 2.9-1.5zM13.2 5.5c-1.6-.1-3 .9-3.8.9s-2-.9-3.3-.8c-1.7 0-3.3 1-4.2 2.5C.1 11-.5 15.3 1.3 18.2c.8 1.3 1.8 2.8 3.2 2.8 1.2 0 1.7-.8 3.2-.8s1.9.8 3.2.8 2.2-1.4 3-2.7c.5-.8.7-1.2 1.1-2.1-2.8-1.1-3.3-5.1-.5-6.7z"/>',
             android: '<path d="M3.5 10v4.5c0 .6.4 1 1 1s1-.4 1-1V10h5v4.5c0 .6.4 1 1 1s1-.4 1-1V10h.5c.6 0 1-.4 1-1V4H2v5c0 .6.4 1 1 1h.5zm7.4-8.4l.9-.9c.2-.2.2-.4 0-.5s-.4-.2-.5 0l-1 1C9.7 1.1 9 1 8.2 1s-1.5.1-2.1.3l-1-1c-.2-.2-.4-.2-.5 0-.2.2-.2.4 0 .5l.9.9C4.5 2.3 3.5 3.5 3.2 5h10c-.3-1.5-1.3-2.7-2.3-3.4zM6 4c-.3 0-.5-.2-.5-.5S5.7 3 6 3s.5.2.5.5S6.3 4 6 4zm4.5 0c-.3 0-.5-.2-.5-.5s.2-.5.5-.5.5.2.5.5-.2.5-.5.5z"/>',
@@ -967,6 +916,108 @@
             linux: '<path d="M8 0C5.2 0 3.7 2.4 3.7 5c0 1.4.4 2.6.8 3.6.3.7.5 1.3.5 1.8 0 .3-.1.5-.3.8-.4.5-.8 1-1 1.8-.2.9.1 1.7.7 2.2.5.4 1.1.6 1.6.7.5.1 1 .1 1.4.1h1.2c.4 0 .9 0 1.4-.1.5-.1 1.1-.3 1.6-.7.6-.5.9-1.3.7-2.2-.2-.8-.6-1.3-1-1.8-.2-.3-.3-.5-.3-.8 0-.5.2-1.1.5-1.8.4-1 .8-2.2.8-3.6C12.3 2.4 10.8 0 8 0z"/>',
             androidtv: '<rect x="1" y="3" width="14" height="9" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="6" y1="14" x2="10" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
             appletv: '<rect x="1" y="3" width="14" height="9" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="6" y1="14" x2="10" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>'
+        };
+
+        // SVG icon templates for guide steps
+        var stepIcons = {
+            download: '<svg viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>',
+            add: '<svg viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>',
+            info: '<svg viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>',
+            connect: '<svg viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>'
+        };
+
+        // Per-app installation guide data
+        var appGuides = {
+            flclashx: {
+                title: 'FlClashX Installation Guide',
+                steps: [
+                    { icon: 'download', title: 'Download Application', desc: 'Download the FlClashX installer for your platform and run the setup wizard.', buttons: [{ text: 'Windows Installer', href: '#' }, { text: 'macOS DMG', href: '#' }, { text: 'Linux AppImage', href: '#' }] },
+                    { icon: 'add', title: 'Add Subscription', desc: 'Open FlClashX, go to Profiles and paste your subscription URL to import server configurations.', buttons: [{ text: '+ Add Subscription', href: '#' }] },
+                    { icon: 'info', title: 'Select a Profile', desc: 'Choose the imported profile from the list and wait for the servers to load.', buttons: [{ text: 'Go to Profiles', href: '#' }] },
+                    { icon: 'connect', title: 'Connect & Use', desc: 'Toggle the system proxy switch and select a server node. You are now connected.', buttons: [{ text: 'Open Dashboard', href: '#' }] }
+                ]
+            },
+            koala: {
+                title: 'Koala Clash Installation Guide',
+                steps: [
+                    { icon: 'download', title: 'Download Application', desc: 'Download Koala Clash for your operating system and install it.', buttons: [{ text: 'Windows Installer', href: '#' }, { text: 'macOS DMG', href: '#' }] },
+                    { icon: 'add', title: 'Import Subscription URL', desc: 'Open the app and paste your subscription URL in the subscription management section.', buttons: [{ text: '+ Add Subscription', href: '#' }] },
+                    { icon: 'info', title: 'Select Proxy Node', desc: 'Choose a server from the proxy list. Nodes are sorted by latency for your convenience.', buttons: [{ text: 'Go to Proxy Settings', href: '#' }] },
+                    { icon: 'connect', title: 'Enable System Proxy', desc: 'Turn on "System Proxy" to route all traffic through the selected node.', buttons: [{ text: 'Open Dashboard', href: '#' }] }
+                ]
+            },
+            prizrak: {
+                title: 'Prizrak-Box Installation Guide',
+                steps: [
+                    { icon: 'download', title: 'Download Application', desc: 'Download Prizrak-Box installer and follow the installation instructions.', buttons: [{ text: 'Windows Installer', href: '#' }, { text: 'macOS DMG', href: '#' }] },
+                    { icon: 'add', title: 'Add Subscription Link', desc: 'Go to Settings and add your subscription URL. The server list will be fetched automatically.', buttons: [{ text: '+ Add Subscription', href: '#' }] },
+                    { icon: 'info', title: 'Configure Routing', desc: 'Choose a routing mode: Global, Rule-based, or Direct for fine-grained traffic control.', buttons: [{ text: 'Go to Settings', href: '#' }] },
+                    { icon: 'connect', title: 'Connect', desc: 'Select a server and tap Connect. Your traffic is now encrypted and routed securely.', buttons: [{ text: 'Open Dashboard', href: '#' }] }
+                ]
+            },
+            happ: {
+                title: 'Happ Installation Guide',
+                steps: [
+                    { icon: 'download', title: 'Install Application', desc: 'Open the store page and install the app. Or install from the APK file directly if Google Play is not available.', buttons: [{ text: 'App Store', href: '#' }, { text: 'Google Play', href: '#' }, { text: 'APK Download', href: '#' }] },
+                    { icon: 'add', title: 'Paste Subscription URL', desc: 'Open the app, tap "+" and paste your subscription URL. Servers will be imported automatically.', buttons: [{ text: '+ Add Subscription', href: '#' }] },
+                    { icon: 'info', title: 'Choose a Server', desc: 'Browse the server list and select a server with the lowest ping for the best connection.', buttons: [{ text: 'Go to Server List', href: '#' }] },
+                    { icon: 'connect', title: 'Tap Connect', desc: 'Press the Connect button. Allow VPN permissions if prompted. You are all set.', buttons: [{ text: 'Open App', href: '#' }] }
+                ]
+            },
+            stash: {
+                title: 'Stash Installation Guide',
+                steps: [
+                    { icon: 'download', title: 'Install from App Store', desc: 'Open the App Store link and install Stash on your device.', buttons: [{ text: 'App Store', href: '#' }] },
+                    { icon: 'add', title: 'Add Config via URL', desc: 'Go to Config section, tap "+" and enter your subscription URL to download the configuration.', buttons: [{ text: '+ Add Config', href: '#' }] },
+                    { icon: 'info', title: 'Select Policy Group', desc: 'In the Policy tab, choose which proxy group to use for routing your traffic.', buttons: [{ text: 'Go to Policy', href: '#' }] },
+                    { icon: 'connect', title: 'Enable VPN', desc: 'Toggle the VPN switch on the main screen. Allow VPN configuration if prompted.', buttons: [{ text: 'Open Stash', href: '#' }] }
+                ]
+            },
+            shadowrocket: {
+                title: 'Shadowrocket Installation Guide',
+                steps: [
+                    { icon: 'download', title: 'Install from App Store', desc: 'Purchase and install Shadowrocket from the App Store.', buttons: [{ text: 'App Store', href: '#' }] },
+                    { icon: 'add', title: 'Add Subscription URL', desc: 'Tap "+" in the top right, select "Subscribe" and paste your subscription URL.', buttons: [{ text: '+ Add Subscription', href: '#' }] },
+                    { icon: 'info', title: 'Select a Node', desc: 'Tap on a server from the list. A checkmark will appear next to the selected node.', buttons: [{ text: 'Go to Server List', href: '#' }] },
+                    { icon: 'connect', title: 'Toggle Connect', desc: 'Turn on the connection toggle at the top. Allow VPN permissions when prompted.', buttons: [{ text: 'Open Shadowrocket', href: '#' }] }
+                ]
+            },
+            streisand: {
+                title: 'Streisand Installation Guide',
+                steps: [
+                    { icon: 'download', title: 'Install from App Store', desc: 'Download Streisand from the App Store and open it.', buttons: [{ text: 'App Store', href: '#' }] },
+                    { icon: 'add', title: 'Import Subscription', desc: 'Go to the subscription section and paste your URL. Servers will appear after the import.', buttons: [{ text: '+ Add Subscription', href: '#' }] },
+                    { icon: 'info', title: 'Choose Protocol', desc: 'Select the connection protocol that works best in your network environment.', buttons: [{ text: 'Go to Settings', href: '#' }] },
+                    { icon: 'connect', title: 'Connect', desc: 'Pick a server and tap Connect. Allow VPN configuration if this is your first time.', buttons: [{ text: 'Open Streisand', href: '#' }] }
+                ]
+            },
+            clashmeta: {
+                title: 'Clash Meta Installation Guide',
+                steps: [
+                    { icon: 'download', title: 'Install Application', desc: 'Open Google Play and install Clash Meta. Or download the APK directly if Google Play is unavailable.', buttons: [{ text: 'Google Play', href: '#' }, { text: 'APK Download', href: '#' }] },
+                    { icon: 'add', title: 'Import Subscription URL', desc: 'Open the app, go to Profiles and add your subscription URL to import the configuration.', buttons: [{ text: '+ Add Subscription', href: '#' }] },
+                    { icon: 'info', title: 'Select Proxy Group', desc: 'In the Proxy tab, choose the proxy group and select a server node.', buttons: [{ text: 'Go to Proxies', href: '#' }] },
+                    { icon: 'connect', title: 'Start VPN', desc: 'Tap the Start button and allow VPN permissions. You are now connected.', buttons: [{ text: 'Open Clash Meta', href: '#' }] }
+                ]
+            },
+            v2rayng: {
+                title: 'v2rayNG Installation Guide',
+                steps: [
+                    { icon: 'download', title: 'Install Application', desc: 'Open Google Play and install v2rayNG. Or download the APK file directly if Google Play is not available.', buttons: [{ text: 'Google Play', href: '#' }, { text: 'APK Download', href: '#' }] },
+                    { icon: 'add', title: 'Add Subscription', desc: 'Tap the "+" icon, select "Import config from URL" and paste your subscription link.', buttons: [{ text: '+ Add Subscription', href: '#' }] },
+                    { icon: 'info', title: 'Update Subscription', desc: 'Tap the menu and select "Update subscription" to fetch the latest server list.', buttons: [{ text: 'Refresh Servers', href: '#' }] },
+                    { icon: 'connect', title: 'Tap V button to Connect', desc: 'Select a server from the list and tap the V button at the bottom to connect.', buttons: [{ text: 'Open v2rayNG', href: '#' }] }
+                ]
+            },
+            vpn4tv: {
+                title: 'vpn4tv Installation Guide',
+                steps: [
+                    { icon: 'download', title: 'Install Application', desc: 'Install vpn4tv from Google Play on your Android TV. Or sideload the APK if needed.', buttons: [{ text: 'Google Play (TV)', href: '#' }, { text: 'APK Sideload', href: '#' }] },
+                    { icon: 'add', title: 'Enter Subscription URL', desc: 'Navigate to Settings and enter your subscription URL using the on-screen keyboard or a companion device.', buttons: [{ text: '+ Add Subscription', href: '#' }] },
+                    { icon: 'info', title: 'Select Server', desc: 'Browse the server list and pick a server. Use the TV remote to navigate.', buttons: [{ text: 'Go to Servers', href: '#' }] },
+                    { icon: 'connect', title: 'Connect', desc: 'Press Connect on the main screen. Allow VPN permissions when prompted by the system.', buttons: [{ text: 'Open vpn4tv', href: '#' }] }
+                ]
+            }
         };
 
         function changePlatform(platform) {
@@ -983,7 +1034,112 @@
             if (target) {
                 target.classList.add('active');
             }
+
+            // Clear selection and hide guide when platform changes
+            clearSelection();
+            hideGuide();
         }
+
+        function selectApp(cardEl) {
+            // Remove selection from all cards across all grids
+            var allCards = document.querySelectorAll('.app-card');
+            for (var i = 0; i < allCards.length; i++) {
+                allCards[i].classList.remove('selected');
+            }
+
+            // Mark clicked card as selected
+            cardEl.classList.add('selected');
+
+            // Show guide for this app
+            var appKey = cardEl.getAttribute('data-app');
+            showGuide(appKey);
+        }
+
+        function showGuide(appKey) {
+            var guide = appGuides[appKey];
+            if (!guide) return;
+
+            var section = document.getElementById('guideSection');
+            var titleEl = document.getElementById('guideTitle');
+            var stepsEl = document.getElementById('guideSteps');
+
+            titleEl.textContent = guide.title;
+            stepsEl.innerHTML = '';
+
+            for (var i = 0; i < guide.steps.length; i++) {
+                var step = guide.steps[i];
+                var stepDiv = document.createElement('div');
+                stepDiv.className = 'guide-step';
+
+                var headerDiv = document.createElement('div');
+                headerDiv.className = 'step-header';
+
+                var iconDiv = document.createElement('div');
+                iconDiv.className = 'step-icon';
+                iconDiv.innerHTML = stepIcons[step.icon] || stepIcons.info;
+
+                var contentDiv = document.createElement('div');
+                contentDiv.className = 'step-content';
+
+                var titleDiv = document.createElement('div');
+                titleDiv.className = 'step-title';
+                titleDiv.textContent = step.title;
+
+                contentDiv.appendChild(titleDiv);
+
+                if (step.desc) {
+                    var descDiv = document.createElement('div');
+                    descDiv.className = 'step-description';
+                    descDiv.textContent = step.desc;
+                    contentDiv.appendChild(descDiv);
+                }
+
+                headerDiv.appendChild(iconDiv);
+                headerDiv.appendChild(contentDiv);
+
+                var actionsDiv = document.createElement('div');
+                actionsDiv.className = 'step-actions';
+
+                for (var j = 0; j < step.buttons.length; j++) {
+                    var btn = step.buttons[j];
+                    var a = document.createElement('a');
+                    a.href = btn.href;
+                    a.className = 'step-btn';
+                    a.textContent = btn.text;
+                    actionsDiv.appendChild(a);
+                }
+
+                stepDiv.appendChild(headerDiv);
+                stepDiv.appendChild(actionsDiv);
+                stepsEl.appendChild(stepDiv);
+            }
+
+            section.classList.add('visible');
+            section.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function hideGuide() {
+            var section = document.getElementById('guideSection');
+            section.classList.remove('visible');
+        }
+
+        function clearSelection() {
+            var allCards = document.querySelectorAll('.app-card');
+            for (var i = 0; i < allCards.length; i++) {
+                allCards[i].classList.remove('selected');
+            }
+        }
+
+        // Keyboard support for app cards (Enter / Space)
+        document.addEventListener('keydown', function(e) {
+            var target = e.target;
+            if (target.classList && target.classList.contains('app-card')) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    selectApp(target);
+                }
+            }
+        });
     </script>
 </body>
 </html>
