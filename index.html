@@ -393,8 +393,8 @@
 
         .guide-step {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
+            flex-direction: column;
+            gap: 10px;
             background: rgba(255, 255, 255, 0.5);
             border-radius: 18px;
             padding: 16px 20px;
@@ -404,9 +404,9 @@
                 inset 0 1px 0 rgba(255, 255, 255, 0.5);
         }
 
-        .step-left {
+        .step-header {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 12px;
         }
 
@@ -417,6 +417,7 @@
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
+            margin-top: 1px;
         }
 
         .step-icon svg {
@@ -424,18 +425,30 @@
             height: 20px;
         }
 
+        .step-content {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            min-width: 0;
+        }
+
         .step-title {
             font-size: 14px;
             font-weight: 600;
             color: #1a1a2e;
-            white-space: nowrap;
+        }
+
+        .step-description {
+            font-size: 12px;
+            font-weight: 400;
+            color: #666;
+            line-height: 1.5;
         }
 
         .step-actions {
             display: flex;
             gap: 6px;
             flex-wrap: wrap;
-            justify-content: flex-end;
         }
 
         .step-btn {
@@ -918,91 +931,91 @@
             flclashx: {
                 title: 'FlClashX Installation Guide',
                 steps: [
-                    { icon: 'download', title: 'Download FlClashX', buttons: [{ text: 'Windows Installer', href: '#' }, { text: 'macOS DMG', href: '#' }, { text: 'Linux AppImage', href: '#' }] },
-                    { icon: 'add', title: 'Add Subscription', buttons: [{ text: '+ Add Subscription', href: '#' }] },
-                    { icon: 'info', title: 'Select a Profile', buttons: [{ text: 'Go to Profiles', href: '#' }] },
-                    { icon: 'connect', title: 'Connect & Use', buttons: [{ text: 'Open Dashboard', href: '#' }] }
+                    { icon: 'download', title: 'Download Application', desc: 'Download the FlClashX installer for your platform and run the setup wizard.', buttons: [{ text: 'Windows Installer', href: '#' }, { text: 'macOS DMG', href: '#' }, { text: 'Linux AppImage', href: '#' }] },
+                    { icon: 'add', title: 'Add Subscription', desc: 'Open FlClashX, go to Profiles and paste your subscription URL to import server configurations.', buttons: [{ text: '+ Add Subscription', href: '#' }] },
+                    { icon: 'info', title: 'Select a Profile', desc: 'Choose the imported profile from the list and wait for the servers to load.', buttons: [{ text: 'Go to Profiles', href: '#' }] },
+                    { icon: 'connect', title: 'Connect & Use', desc: 'Toggle the system proxy switch and select a server node. You are now connected.', buttons: [{ text: 'Open Dashboard', href: '#' }] }
                 ]
             },
             koala: {
                 title: 'Koala Clash Installation Guide',
                 steps: [
-                    { icon: 'download', title: 'Download Koala Clash', buttons: [{ text: 'Windows Installer', href: '#' }, { text: 'macOS DMG', href: '#' }] },
-                    { icon: 'add', title: 'Import Subscription URL', buttons: [{ text: '+ Add Subscription', href: '#' }] },
-                    { icon: 'info', title: 'Select Proxy Node', buttons: [{ text: 'Go to Proxy Settings', href: '#' }] },
-                    { icon: 'connect', title: 'Enable System Proxy', buttons: [{ text: 'Open Dashboard', href: '#' }] }
+                    { icon: 'download', title: 'Download Application', desc: 'Download Koala Clash for your operating system and install it.', buttons: [{ text: 'Windows Installer', href: '#' }, { text: 'macOS DMG', href: '#' }] },
+                    { icon: 'add', title: 'Import Subscription URL', desc: 'Open the app and paste your subscription URL in the subscription management section.', buttons: [{ text: '+ Add Subscription', href: '#' }] },
+                    { icon: 'info', title: 'Select Proxy Node', desc: 'Choose a server from the proxy list. Nodes are sorted by latency for your convenience.', buttons: [{ text: 'Go to Proxy Settings', href: '#' }] },
+                    { icon: 'connect', title: 'Enable System Proxy', desc: 'Turn on "System Proxy" to route all traffic through the selected node.', buttons: [{ text: 'Open Dashboard', href: '#' }] }
                 ]
             },
             prizrak: {
                 title: 'Prizrak-Box Installation Guide',
                 steps: [
-                    { icon: 'download', title: 'Download Prizrak-Box', buttons: [{ text: 'Windows Installer', href: '#' }, { text: 'macOS DMG', href: '#' }] },
-                    { icon: 'add', title: 'Add Subscription Link', buttons: [{ text: '+ Add Subscription', href: '#' }] },
-                    { icon: 'info', title: 'Configure Routing', buttons: [{ text: 'Go to Settings', href: '#' }] },
-                    { icon: 'connect', title: 'Connect', buttons: [{ text: 'Open Dashboard', href: '#' }] }
+                    { icon: 'download', title: 'Download Application', desc: 'Download Prizrak-Box installer and follow the installation instructions.', buttons: [{ text: 'Windows Installer', href: '#' }, { text: 'macOS DMG', href: '#' }] },
+                    { icon: 'add', title: 'Add Subscription Link', desc: 'Go to Settings and add your subscription URL. The server list will be fetched automatically.', buttons: [{ text: '+ Add Subscription', href: '#' }] },
+                    { icon: 'info', title: 'Configure Routing', desc: 'Choose a routing mode: Global, Rule-based, or Direct for fine-grained traffic control.', buttons: [{ text: 'Go to Settings', href: '#' }] },
+                    { icon: 'connect', title: 'Connect', desc: 'Select a server and tap Connect. Your traffic is now encrypted and routed securely.', buttons: [{ text: 'Open Dashboard', href: '#' }] }
                 ]
             },
             happ: {
                 title: 'Happ Installation Guide',
                 steps: [
-                    { icon: 'download', title: 'Download Happ', buttons: [{ text: 'App Store', href: '#' }, { text: 'Google Play', href: '#' }, { text: 'APK Download', href: '#' }] },
-                    { icon: 'add', title: 'Paste Subscription URL', buttons: [{ text: '+ Add Subscription', href: '#' }] },
-                    { icon: 'info', title: 'Choose a Server', buttons: [{ text: 'Go to Server List', href: '#' }] },
-                    { icon: 'connect', title: 'Tap Connect', buttons: [{ text: 'Open App', href: '#' }] }
+                    { icon: 'download', title: 'Install Application', desc: 'Open the store page and install the app. Or install from the APK file directly if Google Play is not available.', buttons: [{ text: 'App Store', href: '#' }, { text: 'Google Play', href: '#' }, { text: 'APK Download', href: '#' }] },
+                    { icon: 'add', title: 'Paste Subscription URL', desc: 'Open the app, tap "+" and paste your subscription URL. Servers will be imported automatically.', buttons: [{ text: '+ Add Subscription', href: '#' }] },
+                    { icon: 'info', title: 'Choose a Server', desc: 'Browse the server list and select a server with the lowest ping for the best connection.', buttons: [{ text: 'Go to Server List', href: '#' }] },
+                    { icon: 'connect', title: 'Tap Connect', desc: 'Press the Connect button. Allow VPN permissions if prompted. You are all set.', buttons: [{ text: 'Open App', href: '#' }] }
                 ]
             },
             stash: {
                 title: 'Stash Installation Guide',
                 steps: [
-                    { icon: 'download', title: 'Install Stash from App Store', buttons: [{ text: 'App Store', href: '#' }] },
-                    { icon: 'add', title: 'Add Config via URL', buttons: [{ text: '+ Add Config', href: '#' }] },
-                    { icon: 'info', title: 'Select Policy Group', buttons: [{ text: 'Go to Policy', href: '#' }] },
-                    { icon: 'connect', title: 'Enable VPN', buttons: [{ text: 'Open Stash', href: '#' }] }
+                    { icon: 'download', title: 'Install from App Store', desc: 'Open the App Store link and install Stash on your device.', buttons: [{ text: 'App Store', href: '#' }] },
+                    { icon: 'add', title: 'Add Config via URL', desc: 'Go to Config section, tap "+" and enter your subscription URL to download the configuration.', buttons: [{ text: '+ Add Config', href: '#' }] },
+                    { icon: 'info', title: 'Select Policy Group', desc: 'In the Policy tab, choose which proxy group to use for routing your traffic.', buttons: [{ text: 'Go to Policy', href: '#' }] },
+                    { icon: 'connect', title: 'Enable VPN', desc: 'Toggle the VPN switch on the main screen. Allow VPN configuration if prompted.', buttons: [{ text: 'Open Stash', href: '#' }] }
                 ]
             },
             shadowrocket: {
                 title: 'Shadowrocket Installation Guide',
                 steps: [
-                    { icon: 'download', title: 'Install Shadowrocket from App Store', buttons: [{ text: 'App Store', href: '#' }] },
-                    { icon: 'add', title: 'Add Subscription URL', buttons: [{ text: '+ Add Subscription', href: '#' }] },
-                    { icon: 'info', title: 'Select a Node', buttons: [{ text: 'Go to Server List', href: '#' }] },
-                    { icon: 'connect', title: 'Toggle Connect', buttons: [{ text: 'Open Shadowrocket', href: '#' }] }
+                    { icon: 'download', title: 'Install from App Store', desc: 'Purchase and install Shadowrocket from the App Store.', buttons: [{ text: 'App Store', href: '#' }] },
+                    { icon: 'add', title: 'Add Subscription URL', desc: 'Tap "+" in the top right, select "Subscribe" and paste your subscription URL.', buttons: [{ text: '+ Add Subscription', href: '#' }] },
+                    { icon: 'info', title: 'Select a Node', desc: 'Tap on a server from the list. A checkmark will appear next to the selected node.', buttons: [{ text: 'Go to Server List', href: '#' }] },
+                    { icon: 'connect', title: 'Toggle Connect', desc: 'Turn on the connection toggle at the top. Allow VPN permissions when prompted.', buttons: [{ text: 'Open Shadowrocket', href: '#' }] }
                 ]
             },
             streisand: {
                 title: 'Streisand Installation Guide',
                 steps: [
-                    { icon: 'download', title: 'Install Streisand from App Store', buttons: [{ text: 'App Store', href: '#' }] },
-                    { icon: 'add', title: 'Import Subscription', buttons: [{ text: '+ Add Subscription', href: '#' }] },
-                    { icon: 'info', title: 'Choose Protocol', buttons: [{ text: 'Go to Settings', href: '#' }] },
-                    { icon: 'connect', title: 'Connect', buttons: [{ text: 'Open Streisand', href: '#' }] }
+                    { icon: 'download', title: 'Install from App Store', desc: 'Download Streisand from the App Store and open it.', buttons: [{ text: 'App Store', href: '#' }] },
+                    { icon: 'add', title: 'Import Subscription', desc: 'Go to the subscription section and paste your URL. Servers will appear after the import.', buttons: [{ text: '+ Add Subscription', href: '#' }] },
+                    { icon: 'info', title: 'Choose Protocol', desc: 'Select the connection protocol that works best in your network environment.', buttons: [{ text: 'Go to Settings', href: '#' }] },
+                    { icon: 'connect', title: 'Connect', desc: 'Pick a server and tap Connect. Allow VPN configuration if this is your first time.', buttons: [{ text: 'Open Streisand', href: '#' }] }
                 ]
             },
             clashmeta: {
                 title: 'Clash Meta Installation Guide',
                 steps: [
-                    { icon: 'download', title: 'Download Clash Meta', buttons: [{ text: 'Google Play', href: '#' }, { text: 'APK Download', href: '#' }] },
-                    { icon: 'add', title: 'Import Subscription URL', buttons: [{ text: '+ Add Subscription', href: '#' }] },
-                    { icon: 'info', title: 'Select Proxy Group', buttons: [{ text: 'Go to Proxies', href: '#' }] },
-                    { icon: 'connect', title: 'Start VPN', buttons: [{ text: 'Open Clash Meta', href: '#' }] }
+                    { icon: 'download', title: 'Install Application', desc: 'Open Google Play and install Clash Meta. Or download the APK directly if Google Play is unavailable.', buttons: [{ text: 'Google Play', href: '#' }, { text: 'APK Download', href: '#' }] },
+                    { icon: 'add', title: 'Import Subscription URL', desc: 'Open the app, go to Profiles and add your subscription URL to import the configuration.', buttons: [{ text: '+ Add Subscription', href: '#' }] },
+                    { icon: 'info', title: 'Select Proxy Group', desc: 'In the Proxy tab, choose the proxy group and select a server node.', buttons: [{ text: 'Go to Proxies', href: '#' }] },
+                    { icon: 'connect', title: 'Start VPN', desc: 'Tap the Start button and allow VPN permissions. You are now connected.', buttons: [{ text: 'Open Clash Meta', href: '#' }] }
                 ]
             },
             v2rayng: {
                 title: 'v2rayNG Installation Guide',
                 steps: [
-                    { icon: 'download', title: 'Download v2rayNG', buttons: [{ text: 'Google Play', href: '#' }, { text: 'APK Download', href: '#' }] },
-                    { icon: 'add', title: 'Add Subscription', buttons: [{ text: '+ Add Subscription', href: '#' }] },
-                    { icon: 'info', title: 'Update Subscription', buttons: [{ text: 'Refresh Servers', href: '#' }] },
-                    { icon: 'connect', title: 'Tap V button to Connect', buttons: [{ text: 'Open v2rayNG', href: '#' }] }
+                    { icon: 'download', title: 'Install Application', desc: 'Open Google Play and install v2rayNG. Or download the APK file directly if Google Play is not available.', buttons: [{ text: 'Google Play', href: '#' }, { text: 'APK Download', href: '#' }] },
+                    { icon: 'add', title: 'Add Subscription', desc: 'Tap the "+" icon, select "Import config from URL" and paste your subscription link.', buttons: [{ text: '+ Add Subscription', href: '#' }] },
+                    { icon: 'info', title: 'Update Subscription', desc: 'Tap the menu and select "Update subscription" to fetch the latest server list.', buttons: [{ text: 'Refresh Servers', href: '#' }] },
+                    { icon: 'connect', title: 'Tap V button to Connect', desc: 'Select a server from the list and tap the V button at the bottom to connect.', buttons: [{ text: 'Open v2rayNG', href: '#' }] }
                 ]
             },
             vpn4tv: {
                 title: 'vpn4tv Installation Guide',
                 steps: [
-                    { icon: 'download', title: 'Install vpn4tv', buttons: [{ text: 'Google Play (TV)', href: '#' }, { text: 'APK Sideload', href: '#' }] },
-                    { icon: 'add', title: 'Enter Subscription URL', buttons: [{ text: '+ Add Subscription', href: '#' }] },
-                    { icon: 'info', title: 'Select Server', buttons: [{ text: 'Go to Servers', href: '#' }] },
-                    { icon: 'connect', title: 'Connect', buttons: [{ text: 'Open vpn4tv', href: '#' }] }
+                    { icon: 'download', title: 'Install Application', desc: 'Install vpn4tv from Google Play on your Android TV. Or sideload the APK if needed.', buttons: [{ text: 'Google Play (TV)', href: '#' }, { text: 'APK Sideload', href: '#' }] },
+                    { icon: 'add', title: 'Enter Subscription URL', desc: 'Navigate to Settings and enter your subscription URL using the on-screen keyboard or a companion device.', buttons: [{ text: '+ Add Subscription', href: '#' }] },
+                    { icon: 'info', title: 'Select Server', desc: 'Browse the server list and pick a server. Use the TV remote to navigate.', buttons: [{ text: 'Go to Servers', href: '#' }] },
+                    { icon: 'connect', title: 'Connect', desc: 'Press Connect on the main screen. Allow VPN permissions when prompted by the system.', buttons: [{ text: 'Open vpn4tv', href: '#' }] }
                 ]
             }
         };
@@ -1058,19 +1071,31 @@
                 var stepDiv = document.createElement('div');
                 stepDiv.className = 'guide-step';
 
-                var leftDiv = document.createElement('div');
-                leftDiv.className = 'step-left';
+                var headerDiv = document.createElement('div');
+                headerDiv.className = 'step-header';
 
                 var iconDiv = document.createElement('div');
                 iconDiv.className = 'step-icon';
                 iconDiv.innerHTML = stepIcons[step.icon] || stepIcons.info;
 
+                var contentDiv = document.createElement('div');
+                contentDiv.className = 'step-content';
+
                 var titleDiv = document.createElement('div');
                 titleDiv.className = 'step-title';
                 titleDiv.textContent = step.title;
 
-                leftDiv.appendChild(iconDiv);
-                leftDiv.appendChild(titleDiv);
+                contentDiv.appendChild(titleDiv);
+
+                if (step.desc) {
+                    var descDiv = document.createElement('div');
+                    descDiv.className = 'step-description';
+                    descDiv.textContent = step.desc;
+                    contentDiv.appendChild(descDiv);
+                }
+
+                headerDiv.appendChild(iconDiv);
+                headerDiv.appendChild(contentDiv);
 
                 var actionsDiv = document.createElement('div');
                 actionsDiv.className = 'step-actions';
@@ -1084,7 +1109,7 @@
                     actionsDiv.appendChild(a);
                 }
 
-                stepDiv.appendChild(leftDiv);
+                stepDiv.appendChild(headerDiv);
                 stepDiv.appendChild(actionsDiv);
                 stepsEl.appendChild(stepDiv);
             }
